@@ -1,36 +1,44 @@
 from django.contrib import admin
 
-from dds_app.models import Status, Type, Category, Subcategory, CashFlow
+from dds_app.models import CashFlow, Category, Status, Subcategory, Type
 
 
 @admin.register(Status)
 class StatusAdmin(admin.ModelAdmin):
-    list_display = ("name", )
-    search_fields = ("name", )
+    list_display = ("name",)
+    search_fields = ("name",)
+
 
 @admin.register(Type)
 class TypeAdmin(admin.ModelAdmin):
-    list_display = ("name", )
-    search_fields = ("name", )
+    list_display = ("name",)
+    search_fields = ("name",)
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "type")
-    search_fields = ("name","type")
-    list_filter = ("name","type")
+    list_display = ("name", "type", "subcategory")
+    search_fields = ("name", "type", "subcategory")
+    list_filter = ("name", "type", "subcategory")
 
 
 @admin.register(Subcategory)
 class SubcategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", )
+    list_display = ("name",)
     search_fields = ("name",)
     list_filter = ("name",)
 
 
 @admin.register(CashFlow)
 class CashFlowAdmin(admin.ModelAdmin):
-    list_display = ("created_at", "status", "type", "category", "subcategory", "amount", "comment")
-    search_fields = ("created_at", "status__name", "type__name", "category__name", "subcategory__name", "amount")
-    list_filter = ("created_at", "status", "type", "category", "subcategory")
-    date_hierarchy = 'created_at'
+    list_display = ("user", "created_at", "status", "type", "category", "subcategory", "amount", "comment")
+    search_fields = (
+        "user__username",
+        "status__name",
+        "type__name",
+        "category__name",
+        "subcategory__name",
+        "amount",
+    )
+    list_filter = ("user", "created_at", "status", "type", "category", "subcategory")
+    date_hierarchy = "created_at"
