@@ -17,9 +17,13 @@ class TypeAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "type", "subcategory")
+    list_display = ("name", "type", "get_subcategory")
     search_fields = ("name", "type", "subcategory")
     list_filter = ("name", "type", "subcategory")
+
+
+    def get_subcategory(self, obj):
+        return ", ".join(sub.name for sub in obj.subcategory.all())
 
 
 @admin.register(Subcategory)
