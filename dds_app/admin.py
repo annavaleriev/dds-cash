@@ -21,7 +21,6 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ("name", "type", "subcategory")
     list_filter = ("name", "type", "subcategory")
 
-
     def get_subcategory(self, obj):
         return ", ".join(sub.name for sub in obj.subcategory.all())
 
