@@ -6,6 +6,7 @@
 ![Django ORM](https://img.shields.io/badge/-Django%20ORM-092E20?logo=django&logoColor=white)
 
 ##Веб-сервис для управления движением денежных средств (ДДС)
+Тестовое задание https://drive.google.com/file/d/1aC1Rq6FYfQfgry9rUF_99XCbjdUqBCUD/view?usp=drive_link
 
 ### Описание проекта
 Веб-приложение предназначено для ведения учета операций движения денежных средств (ДДС) компании или частного лица.
@@ -63,7 +64,7 @@
 
 1. Склонируйте репозиторий:
    ```bash
-   git clone https://github.com/annavaleriev/fill_employee_task_tracker.git
+   git clone https://github.com/annavaleriev/dds-cash.git
 
    cd ваш-репозиторий
    
@@ -73,4 +74,9 @@
    ```bash
    docker-compose up -d --build
    ```
-4. Перейдите в браузер по адресу http://127.0.0.1:8000
+4. Выполните миграции и создайте суперпользователя (опционально)
+   ```bash
+   docker-compose exec web python manage.py migrate
+   docker-compose exec web python manage.py createsuperuser
+   ```
+5. Перейдите в браузер по адресу http://127.0.0.1:8000
