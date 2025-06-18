@@ -15,52 +15,101 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Status',
+            name="Status",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, unique=True, verbose_name='Статус операции')),
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("name", models.CharField(max_length=100, unique=True, verbose_name="Статус операции")),
             ],
         ),
         migrations.CreateModel(
-            name='Subcategory',
+            name="Subcategory",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='Подкатегория операции')),
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("name", models.CharField(max_length=100, verbose_name="Подкатегория операции")),
             ],
         ),
         migrations.CreateModel(
-            name='Type',
+            name="Type",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, unique=True, verbose_name='Тип операции')),
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("name", models.CharField(max_length=100, unique=True, verbose_name="Тип операции")),
             ],
         ),
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='Категория операции')),
-                ('subcategory', models.ManyToManyField(blank=True, help_text='Выберите подкатегории операции', to='dds_app.subcategory', verbose_name='Подкатегории операции')),
-                ('type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='dds_app.type', verbose_name='Тип операции')),
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("name", models.CharField(max_length=100, verbose_name="Категория операции")),
+                (
+                    "subcategory",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="Выберите подкатегории операции",
+                        to="dds_app.subcategory",
+                        verbose_name="Подкатегории операции",
+                    ),
+                ),
+                (
+                    "type",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="dds_app.type", verbose_name="Тип операции"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='CashFlow',
+            name="CashFlow",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateField(auto_now_add=True, verbose_name='Дата создания')),
-                ('amount', models.DecimalField(decimal_places=2, max_digits=10, verbose_name='Сумма операции')),
-                ('comment', models.TextField(blank=True, null=True, verbose_name='Комментарий')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cash_flows', to=settings.AUTH_USER_MODEL, verbose_name='Пользователь')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='dds_app.category', verbose_name='Категория операции')),
-                ('status', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='dds_app.status', verbose_name='Статус операции')),
-                ('subcategory', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='dds_app.subcategory', verbose_name='Подкатегория операции')),
-                ('type', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='dds_app.type', verbose_name='Тип операции')),
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("created_at", models.DateField(auto_now_add=True, verbose_name="Дата создания")),
+                ("amount", models.DecimalField(decimal_places=2, max_digits=10, verbose_name="Сумма операции")),
+                ("comment", models.TextField(blank=True, null=True, verbose_name="Комментарий")),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="cash_flows",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Пользователь",
+                    ),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="dds_app.category",
+                        verbose_name="Категория операции",
+                    ),
+                ),
+                (
+                    "status",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="dds_app.status",
+                        verbose_name="Статус операции",
+                    ),
+                ),
+                (
+                    "subcategory",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="dds_app.subcategory",
+                        verbose_name="Подкатегория операции",
+                    ),
+                ),
+                (
+                    "type",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT, to="dds_app.type", verbose_name="Тип операции"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Операция с денежными средствами',
-                'verbose_name_plural': 'Операции с денежными средствами',
-                'ordering': ['-created_at'],
+                "verbose_name": "Операция с денежными средствами",
+                "verbose_name_plural": "Операции с денежными средствами",
+                "ordering": ["-created_at"],
             },
         ),
     ]

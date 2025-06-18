@@ -1,7 +1,6 @@
 from rest_framework.routers import DefaultRouter
 
-
-from dds_app.views import StatusViewSet, TypeViewSet, SubcategoryViewSet, CategoryViewSet, CashFlowViewSet
+from dds_app.views import CashFlowViewSet, CategoryViewSet, StatusViewSet, SubcategoryViewSet, TypeViewSet
 
 router = DefaultRouter()
 
