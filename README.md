@@ -6,7 +6,7 @@
 ![Django ORM](https://img.shields.io/badge/-Django%20ORM-092E20?logo=django&logoColor=white)
 
 ##Веб-сервис для управления движением денежных средств (ДДС)
-Тестовое задание https://drive.google.com/file/d/1aC1Rq6FYfQfgry9rUF_99XCbjdUqBCUD/view?usp=drive_link
+Тестовое задание https://drive.google.com/file/d/146JS1XhWfvCgeCP_SB5fos1YjYPFAWcr/view?usp=sharing
 
 ### Описание проекта
 Веб-приложение предназначено для ведения учета операций движения денежных средств (ДДС) компании или частного лица.
