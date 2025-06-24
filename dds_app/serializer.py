@@ -79,6 +79,17 @@ class CashFlowCreateSerializer(serializers.ModelSerializer):
         fields = "__all__"
         read_only_fields = ("created_at",)
 
+    def validate(self, data):
+        """Проверка, что категория соответствует типу операции"""
+
+        type = data.get("type")
+        category = data.get("category")
+
+        if category and type and category.type != type:
+            raise ValidationError({"category": "Категория должна соответствовать типу операции"})
+
+        return data
+
 
 class CashFlowSerializer(CashFlowCreateSerializer):
     """Сериализатор для операций с денежными средствами"""
