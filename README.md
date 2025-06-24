@@ -76,7 +76,10 @@
    ```
 4. Выполните миграции и создайте суперпользователя (опционально)
    ```bash
- docker-compose exec app python manage.py migrate
- docker-compose exec app python manage.py createsuperuser
+develop
+   docker-compose exec app python manage.py migrate
+   docker-compose exec app python manage.py createsuperuser
+
+ main
    ```
 5. Перейдите в браузер по адресу http://127.0.0.1:8000
