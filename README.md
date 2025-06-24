@@ -54,7 +54,6 @@
 - **Валидация данных:** ![Validation](https://img.shields.io/badge/Data%20Validation-Enabled-brightgreen)
 
 
-
 ## Документация
 
 Документация API доступна по адресу http://127.0.0.1:8000/api/docs/
