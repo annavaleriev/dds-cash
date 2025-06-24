@@ -12,6 +12,11 @@ class Status(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Статус операции"
+        verbose_name_plural = "Статусы операций"
+        ordering = ["name"]
+
 
 class Type(models.Model):
     """Модель для типов операций"""
@@ -21,6 +26,11 @@ class Type(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Тип операции"
+        verbose_name_plural = "Типы операций"
+        ordering = ["name"]
+
 
 class Subcategory(models.Model):
     """Модель для подкатегорий операций"""
@@ -29,6 +39,11 @@ class Subcategory(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+    class Meta:
+        verbose_name = "Подкатегория операции"
+        verbose_name_plural = "Подкатегории операций"
+        ordering = ["name"]
 
 
 class Category(models.Model):
@@ -46,6 +61,11 @@ class Category(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.subcategory} {self.type}"
+
+    class Meta:
+        verbose_name = "Категория операции"
+        verbose_name_plural = "Категории операций"
+        ordering = ["name"]
 
 
 class CashFlow(models.Model):
