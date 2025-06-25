@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.core.validators import MinValueValidator
 from django.db import models
 
 User = get_user_model()
@@ -76,7 +77,9 @@ class CashFlow(models.Model):
     type = models.ForeignKey(Type, on_delete=models.PROTECT, verbose_name="Тип операции")
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Категория операции")
     subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE, verbose_name="Подкатегория операции")
-    amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Сумма операции")
+    amount = models.DecimalField(
+        max_digits=10, decimal_places=2, verbose_name="Сумма операции", validators=[MinValueValidator(0.01)]
+    )
     comment = models.TextField(verbose_name="Комментарий", null=True, blank=True)
 
     def __str__(self):
