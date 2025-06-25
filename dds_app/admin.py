@@ -45,3 +45,4 @@ class CashFlowAdmin(admin.ModelAdmin):
     )
     list_filter = ("user", "created_at", "status", "type", "category", "subcategory")
     date_hierarchy = "created_at"
+    read_only_fields = ("created_at",)
