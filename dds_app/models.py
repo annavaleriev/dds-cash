@@ -50,7 +50,6 @@ class Category(models.Model):
     """Модель для категорий операций"""
 
     name = models.CharField(max_length=100, verbose_name="Категория операции")
-    # !ToDo Тип операции должен быть связан только с операцией
     type = models.ForeignKey(Type, on_delete=models.CASCADE, verbose_name="Тип операции")
     subcategory = models.ManyToManyField(
         Subcategory,
@@ -76,9 +75,7 @@ class CashFlow(models.Model):
     status = models.ForeignKey(Status, on_delete=models.PROTECT, verbose_name="Статус операции")
     type = models.ForeignKey(Type, on_delete=models.PROTECT, verbose_name="Тип операции")
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Категория операции")
-    subcategory = models.ForeignKey(
-        Subcategory, on_delete=models.CASCADE, verbose_name="Подкатегория операции", null=True, blank=True
-    )
+    subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE, verbose_name="Подкатегория операции")
     amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Сумма операции")
     comment = models.TextField(verbose_name="Комментарий", null=True, blank=True)
 
