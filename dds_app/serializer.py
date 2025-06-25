@@ -90,12 +90,6 @@ class CashFlowCreateSerializer(serializers.ModelSerializer):
 
         return data
 
-    def validate_amount(self, value):
-        """Проверка, что сумма операции больше нуля"""
-        if value <= 0:
-            raise ValidationError({"amount": "Сумма операции должна быть больше нуля"})
-        return value
-
 
 class CashFlowSerializer(CashFlowCreateSerializer):
     """Сериализатор для операций с денежными средствами"""
